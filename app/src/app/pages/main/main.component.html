@@ -1,4 +1,4 @@
 @for(ch of chapters; track $index) {
-    <a [routerLink]="['/chapter', ch]">Открыть главу {{ ch }}</a>
+    <a [routerLink]="['/chapter', ch.id]">{{ ch.id }}. {{ ch.name }}</a>
     <br>
 }

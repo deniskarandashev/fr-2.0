@@ -1,3 +1,24 @@
-<h2>Глава {{ chapterId }}</h2>
+<h2>{{ chapterId }}: {{ data?.name }}</h2>
 <button (click)="goBack()">Назад</button>
-<a [routerLink]="['/exercise', 1]">Перейти к упражнению</a>
+<!-- <a [routerLink]="['/exercise', 1]">Перейти к упражнению</a> -->
+
+@if (data) {
+    @for (page of data.page; track $index) {
+        <section class="container">
+            <div class="section">
+                <img [src]="data.baseUrl + 'img/' + page.imageUrl" [style.width]="'100%'">
+            </div>
+            <div class="section">
+                @for (audio of page.audioUrl; track $index) {
+                    <mat-card appearance="outlined">
+                        <mat-card-content>Simple card</mat-card-content>
+                    </mat-card>
+                    <audio controls [src]="data.baseUrl + 'audio/piste' + audio + '.mp3'"></audio>
+                }
+            </div>
+        </section>
+        
+    }
+}
+
+
