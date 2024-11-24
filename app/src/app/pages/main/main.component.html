@@ -1,4 +1,7 @@
-@for(ch of chapters; track $index) {
-    <a [routerLink]="['/chapter', ch.id]">{{ ch.id }}. {{ ch.name }}</a>
-    <br>
-}
+<mat-chip-set aria-label="Fish selection">
+    @for(ch of chapters; track $index) {
+    <mat-chip [routerLink]="['/chapter', ch.id]">
+        {{ ch.id }}. {{ ch.name }}
+    </mat-chip>
+    }
+</mat-chip-set>

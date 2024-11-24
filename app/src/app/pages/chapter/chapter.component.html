@@ -1,24 +1,18 @@
 <h2>{{ chapterId }}: {{ data?.name }}</h2>
-<button (click)="goBack()">Назад</button>
-<!-- <a [routerLink]="['/exercise', 1]">Перейти к упражнению</a> -->
+<button mat-stroked-button (click)="goBack()">Назад</button>
 
 @if (data) {
     @for (page of data.page; track $index) {
         <section class="container">
-            <div class="section">
-                <img [src]="data.baseUrl + 'img/' + page.imageUrl" [style.width]="'100%'">
-            </div>
-            <div class="section">
-                @for (audio of page.audioUrl; track $index) {
-                    <mat-card appearance="outlined">
-                        <mat-card-content>Simple card</mat-card-content>
-                    </mat-card>
-                    <audio controls [src]="data.baseUrl + 'audio/piste' + audio + '.mp3'"></audio>
-                }
-            </div>
+            <mat-card appearance="outlined" class="section">
+                <img [src]="data.baseUrl + 'img/' + page.imageUrl" class="book-page">
+            </mat-card>
+            <mat-card appearance="outlined" class="section section-1">
+                <app-audio [page]="page" [data]="data"></app-audio>
+                <app-my-answers-input [chapterName]="data.name" [chapterPageName]="page.imageUrl?.replace('.', '_') ?? ''"></app-my-answers-input>
+                <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl"></app-answers>
+            </mat-card>
         </section>
-        
     }
 }
-
 

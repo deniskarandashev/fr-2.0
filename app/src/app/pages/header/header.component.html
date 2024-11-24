@@ -1,0 +1,18 @@
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        @for(book of books; track $index) {
+            <button mat-menu-item (click)="onMenuItemClick(book)">
+                <b>{{ book.level }}</b>
+                <span>{{ ' ' }}</span>
+                <span>{{ book.name }}</span>
+            </button>
+        }
+      </mat-menu>
+
+      <h2>{{ getCurrentBook() ? getCurrentBook().name : '' }}</h2>
+</mat-toolbar>
+

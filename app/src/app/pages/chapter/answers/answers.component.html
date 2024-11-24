@@ -1,0 +1,10 @@
+<mat-tab-group>
+    <mat-tab label="Hide answers"></mat-tab>
+    @if (answersUrl.length && baseUrl) {
+        @for (answerUrl of answersUrl; track $index) {
+            <mat-tab [label]="'Answers ' + (answersUrl.length === 1 ? '' : ($index + 1).toString())">
+                <img [src]="baseUrl + 'img/' + answerUrl" [style.width]="'100%'">
+            </mat-tab>
+        }
+    }
+</mat-tab-group>
