@@ -36,11 +36,35 @@ export class StorageService {
 
   // TODO: fix
   getChapter(id: number): FullClass | undefined {
-    return this.data.find(d => d.id === id)
+    switch(this.currentBook().name) {
+      case 'Compréhension Orale':
+        return this.data1.find(d => d.id === id)
+      case 'Communication':
+        return this.data.find(d => d.id === id)
+      default:
+        return this.data.find(d => d.id === id)
+    }
   }
 
   // TODO: fix  
   getChapters(): Chapter[] {
+    switch(this.currentBook().name) {
+      case 'Compréhension Orale':
+        return this.data1.map(d => ({
+          id: d.id,
+          name: d.name
+        }))
+      case 'Communication':
+        return this.data.map(d => ({
+          id: d.id,
+          name: d.name
+        }))
+      default:
+        return this.data.map(d => ({
+          id: d.id,
+          name: d.name
+        }))
+    }
     return this.data.map(d => ({
       id: d.id,
       name: d.name
@@ -88,6 +112,9 @@ export class StorageService {
   }
 
 
+  /**
+   * Communication A1
+   */
   private data: FullClass[] = [
     {
       id: 4,
@@ -147,31 +174,31 @@ export class StorageService {
       page: [
         {
           id: 1,
-          imageUrl: 'Communication_essentielle_A1_page-0035.jpg',
+          imageUrl: 'Communication_essentielle_A1_page-0036.jpg',
           audioUrl: [49],
           notes: ''
         },
         {
           id: 2,
-          imageUrl: 'Communication_essentielle_A1_page-0036.jpg',
+          imageUrl: 'Communication_essentielle_A1_page-0037.jpg',
           audioUrl: [50],
           notes: ''
         },
         {
           id: 3,
-          imageUrl: 'Communication_essentielle_A1_page-0037.jpg',
+          imageUrl: 'Communication_essentielle_A1_page-0038.jpg',
           audioUrl: [51,52,53],
           notes: ''
         },
         {
           id: 4,
-          imageUrl: 'Communication_essentielle_A1_page-0038.jpg',
+          imageUrl: 'Communication_essentielle_A1_page-0039.jpg',
           audioUrl: [54,55],
           notes: ''
         },
         {
           id: 5,
-          imageUrl: 'Communication_essentielle_A1_page-0039.jpg',
+          imageUrl: 'Communication_essentielle_A1_page-0040.jpg',
           audioUrl: [56,57,58,59,60],
           notes: ''
         },
@@ -185,6 +212,163 @@ export class StorageService {
     },
   ]
 
+  /**
+   * CO A1
+   */
+
+  private data1: FullClass[] = [
+    {
+      id: 4243,
+      name: '42-45: Garder la forme',
+      baseUrl: 'assets/gram_a1/',
+      answersUrl: [
+        'Compréhension Orale_page-0112.jpg',
+        'Compréhension Orale_page-0125.jpg'
+      ],
+      page: [
+        {
+          id: 1,
+          imageUrl: 'Compréhension Orale_page-0042.jpg',
+          audioUrl: [28],
+          notes: ''
+        },
+        {
+          id: 2,
+          imageUrl: 'Compréhension Orale_page-0043.jpg',
+          audioUrl: [28],
+          notes: ''
+        },
+        {
+          id: 3,
+          imageUrl: 'Compréhension Orale_page-0044.jpg',
+          audioUrl: [28],
+          notes: ''
+        },
+        {
+          id: 4,
+          imageUrl: 'Compréhension Orale_page-0045.jpg',
+          audioUrl: [28],
+          notes: ''
+        },
+      ]
+    },
+    {
+      id: 4647,
+      name: '46-47: Louer un appartament',
+      baseUrl: 'assets/gram_a1/',
+      answersUrl: [
+        'Compréhension Orale_page-0112.jpg',
+        'Compréhension Orale_page-0125.jpg'
+      ],
+      page: [
+        {
+          id: 1,
+          imageUrl: 'Compréhension Orale_page-0046.jpg',
+          audioUrl: [29],
+          notes: ''
+        },
+        {
+          id: 2,
+          imageUrl: 'Compréhension Orale_page-0047.jpg',
+          audioUrl: [29],
+          notes: ''
+        },
+        
+      ]
+    },
+    // {
+    //   id: 4243,
+    //   name: '42-43: Garder la forme',
+    //   baseUrl: 'assets/gram_a1/',
+    //   answersUrl: [
+    //     'Compréhension Orale_page-0112.jpg',
+    //     'Compréhension Orale_page-0125.jpg'
+    //   ],
+    //   page: [
+    //     {
+    //       id: 1,
+    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //     {
+    //       id: 2,
+    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //   ]
+    // },
+    // {
+    //   id: 4243,
+    //   name: '42-43: Garder la forme',
+    //   baseUrl: 'assets/gram_a1/',
+    //   answersUrl: [
+    //     'Compréhension Orale_page-0112.jpg',
+    //     'Compréhension Orale_page-0125.jpg'
+    //   ],
+    //   page: [
+    //     {
+    //       id: 1,
+    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //     {
+    //       id: 2,
+    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //   ]
+    // },
+    // {
+    //   id: 4243,
+    //   name: '42-43: Garder la forme',
+    //   baseUrl: 'assets/gram_a1/',
+    //   answersUrl: [
+    //     'Compréhension Orale_page-0112.jpg',
+    //     'Compréhension Orale_page-0125.jpg'
+    //   ],
+    //   page: [
+    //     {
+    //       id: 1,
+    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //     {
+    //       id: 2,
+    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //   ]
+    // },
+    // {
+    //   id: 4243,
+    //   name: '42-43: Garder la forme',
+    //   baseUrl: 'assets/gram_a1/',
+    //   answersUrl: [
+    //     'Compréhension Orale_page-0112.jpg',
+    //     'Compréhension Orale_page-0125.jpg'
+    //   ],
+    //   page: [
+    //     {
+    //       id: 1,
+    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //     {
+    //       id: 2,
+    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
+    //       audioUrl: [28],
+    //       notes: ''
+    //     },
+    //   ]
+    // },
+  ]
 
   private books: Book[] = [
     {
@@ -196,7 +380,8 @@ export class StorageService {
     {
       name: 'Compréhension Orale',
       level: 'A1',
-      storageName: 'A1_GRAMMAR_COMP'
+      storageName: 'A1_GRAMMAR_COMP',
+      data: this.data1
     },
     // {
     //   name: '',

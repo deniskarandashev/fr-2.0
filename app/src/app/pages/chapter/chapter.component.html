@@ -1,4 +1,4 @@
-@if (currentChapter) {
+@if (currentChapter?.id && currentChapter?.name) {
     <h2>{{ currentChapter.id }}: {{ currentChapter.name }}</h2>
 }
 

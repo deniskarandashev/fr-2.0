@@ -7,7 +7,7 @@
                     
                     <mat-panel-title> {{ audio }} </mat-panel-title>
                     <mat-panel-description>
-                        <audio controls [src]="data.baseUrl + 'audio/piste' + audio + '.mp3'"></audio>
+                        <audio controls [src]="getSrc(audio)"></audio>
                     </mat-panel-description>
                   </mat-expansion-panel-header>
               

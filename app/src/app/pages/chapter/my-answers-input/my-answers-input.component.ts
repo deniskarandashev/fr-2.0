@@ -36,7 +36,6 @@ export class MyAnswersInputComponent implements OnInit {
       this.currentBookName = this.storage.currentBook().name ?? this.storage.getBooks()[1].name ?? '';
       this.allNotes = this.storage.notes() ?? {};
       this.inputNotes = this.allNotes[this.currentBookName]?.[this.chapterName]?.[this.chapterPageName] ?? '';
-      console.log('=======', this.inputNotes)
   }
 
   onInputChange(e: Event): void {
@@ -52,8 +51,6 @@ export class MyAnswersInputComponent implements OnInit {
   
     // Устанавливаем значение
     this.allNotes[this.currentBookName][this.chapterName][this.chapterPageName] = note;
-  
-    console.log('============ this.chapterPageName', this.chapterPageName, note);
 
     this.storage.notes.set(this.allNotes)
     if (this.isBrowser()) {
