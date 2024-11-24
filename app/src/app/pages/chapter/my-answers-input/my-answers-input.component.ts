@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, effect, Input, OnInit } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms'
@@ -23,7 +23,14 @@ export class MyAnswersInputComponent implements OnInit {
   inputNotes: string = ''
   currentBookName: string = '';
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: StorageService) {
+    effect(() => {
+      this.currentBookName = this.storage.currentBook().name ?? this.storage.getBooks()[1].name ?? '';
+      this.chapterName = this.storage.currentChapter().name ?? '';
+
+      this.inputNotes = this.allNotes[this.currentBookName]?.[this.chapterName]?.[this.chapterPageName] ?? '';
+    })
+  }
 
   ngOnInit(): void {
       this.currentBookName = this.storage.currentBook().name ?? this.storage.getBooks()[1].name ?? '';
@@ -46,7 +53,7 @@ export class MyAnswersInputComponent implements OnInit {
     // Устанавливаем значение
     this.allNotes[this.currentBookName][this.chapterName][this.chapterPageName] = note;
   
-    console.log('============ this.chapterPageName', this.chapterPageName);
+    console.log('============ this.chapterPageName', this.chapterPageName, note);
 
     this.storage.notes.set(this.allNotes)
     if (this.isBrowser()) {

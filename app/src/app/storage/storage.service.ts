@@ -10,6 +10,7 @@ export class StorageService {
 
   currentBook: WritableSignal<Book> = signal<Book>({});
   notes: WritableSignal<AllNotes> = signal<AllNotes>({});
+  currentChapter: WritableSignal<FullClass> = signal<FullClass>({} as FullClass);
 
   constructor() {
     if (this.isBrowser()) {
@@ -22,7 +23,6 @@ export class StorageService {
 
       // get current book
       const currBook = localStorage.getItem('BOOK_FR');
-      console.log('==== currBook', currBook)
       if (currBook) {
         const book = JSON.parse(currBook);
         this.currentBook.set(book)
@@ -34,11 +34,12 @@ export class StorageService {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 
-
+  // TODO: fix
   getChapter(id: number): FullClass | undefined {
     return this.data.find(d => d.id === id)
   }
 
+  // TODO: fix  
   getChapters(): Chapter[] {
     return this.data.map(d => ({
       id: d.id,
@@ -85,7 +86,7 @@ export class StorageService {
   
     reader.readAsText(file);
   }
-  
+
 
   private data: FullClass[] = [
     {
@@ -93,8 +94,8 @@ export class StorageService {
       name: 'Chez moi',
       baseUrl: 'assets/sam_a1/',
       answersUrl: [
-        'Communication_essentielle_A1_page-0143.jpg',
-        'Communication_essentielle_A1_page-0144.jpg'
+        'Communication_essentielle_A1_page-0144.jpg',
+        'Communication_essentielle_A1_page-0145.jpg'
       ],
       page: [
         {
@@ -135,6 +136,53 @@ export class StorageService {
         },
       ]
     },
+    {
+      id: 5,
+      name: 'Un problème domestique ?',
+      baseUrl: 'assets/sam_a1/',
+      answersUrl: [
+        'Communication_essentielle_A1_page-0145.jpg',
+        'Communication_essentielle_A1_page-0146.jpg'
+      ],
+      page: [
+        {
+          id: 1,
+          imageUrl: 'Communication_essentielle_A1_page-0035.jpg',
+          audioUrl: [49],
+          notes: ''
+        },
+        {
+          id: 2,
+          imageUrl: 'Communication_essentielle_A1_page-0036.jpg',
+          audioUrl: [50],
+          notes: ''
+        },
+        {
+          id: 3,
+          imageUrl: 'Communication_essentielle_A1_page-0037.jpg',
+          audioUrl: [51,52,53],
+          notes: ''
+        },
+        {
+          id: 4,
+          imageUrl: 'Communication_essentielle_A1_page-0038.jpg',
+          audioUrl: [54,55],
+          notes: ''
+        },
+        {
+          id: 5,
+          imageUrl: 'Communication_essentielle_A1_page-0039.jpg',
+          audioUrl: [56,57,58,59,60],
+          notes: ''
+        },
+        {
+          id: 6,
+          imageUrl: 'Communication_essentielle_A1_page-0040.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+      ]
+    },
   ]
 
 
@@ -142,7 +190,8 @@ export class StorageService {
     {
       name: 'Communication',
       level: 'A1',
-      storageName: 'A1_ACTIVE_COMM'
+      storageName: 'A1_ACTIVE_COMM',
+      data: this.data
     },
     {
       name: 'Compréhension Orale',

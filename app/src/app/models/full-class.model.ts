@@ -1,3 +1,7 @@
+export interface FullDB {
+    [key: string]: FullClass
+}
+
 export interface FullClass {
     id: number;
     name: string;

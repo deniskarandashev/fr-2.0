@@ -1,11 +1,14 @@
-<h2>{{ chapterId }}: {{ data?.name }}</h2>
-<button mat-stroked-button (click)="goBack()">Назад</button>
+@if (currentChapter) {
+    <h2>{{ currentChapter.id }}: {{ currentChapter.name }}</h2>
+}
+
+<!-- <button mat-stroked-button (click)="goBack()">Назад</button> -->
 
 @if (data) {
     @for (page of data.page; track $index) {
         <section class="container">
             <mat-card appearance="outlined" class="section">
-                <img [src]="data.baseUrl + 'img/' + page.imageUrl" class="book-page">
+                <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl" [imageUrl]="page.imageUrl ?? ''" ></app-answers>
             </mat-card>
             <mat-card appearance="outlined" class="section section-1">
                 <app-audio [page]="page" [data]="data"></app-audio>

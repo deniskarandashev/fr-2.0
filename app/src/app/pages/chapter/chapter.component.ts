@@ -38,7 +38,7 @@ import { ChapterNotes } from '../../models/notes.model';
 })
 export class ChapterComponent {
   chapterId = '';
-  data!: FullClass | undefined;
+  // data!: FullClass | undefined;
   chapterNotes!: ChapterNotes;
 
   constructor(
@@ -46,11 +46,20 @@ export class ChapterComponent {
     private location: Location,
     private storage: StorageService
   ) {
-    this.chapterId = this.route.snapshot.paramMap.get('id') || '';
-    this.data = storage.getChapter(parseInt(this.chapterId))
+    // this.chapterId = this.route.snapshot.paramMap.get('id') || '';
+    this.chapterId = this.currentChapter?.id?.toString() ?? '0';
+    // this.data = storage.getChapter(parseInt(this.chapterId))
   }
 
-  goBack(): void {
-    this.location.back();
+  // goBack(): void {
+  //   this.location.back();
+  // }
+
+  get currentChapter(): FullClass {
+    return this.storage.currentChapter();
+  }
+
+  get data(): FullClass | undefined {
+    return this.storage.getChapter(this.currentChapter.id)
   }
 }

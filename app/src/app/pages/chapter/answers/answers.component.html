@@ -1,5 +1,11 @@
 <mat-tab-group>
-    <mat-tab label="Hide answers"></mat-tab>
+    @if (imageUrl) {
+        <mat-tab label="Book">
+            <img [src]="baseUrl + 'img/' + imageUrl" class="book-page">
+        </mat-tab>
+    } @else {
+        <mat-tab label="Hide answers"></mat-tab>
+    }
     @if (answersUrl.length && baseUrl) {
         @for (answerUrl of answersUrl; track $index) {
             <mat-tab [label]="'Answers ' + (answersUrl.length === 1 ? '' : ($index + 1).toString())">

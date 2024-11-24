@@ -12,4 +12,5 @@ import {MatTabsModule} from '@angular/material/tabs';
 export class AnswersComponent {
   @Input() answersUrl!: string[];
   @Input() baseUrl!: string;
+  @Input() imageUrl!: string | undefined;
 }

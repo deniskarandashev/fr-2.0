@@ -1,3 +1,5 @@
+import { FullClass } from "./full-class.model";
+
 /**
  * Collection of all notes.
  * @example {
@@ -25,5 +27,6 @@ export interface PageNotes {
 export interface Book {
     name?: string
     level?: string
-    storageName?: string
+    storageName?: string,
+    data?: FullClass[]
 }
