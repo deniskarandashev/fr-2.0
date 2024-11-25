@@ -41,6 +41,8 @@ export class StorageService {
         return this.data1.find(d => d.id === id)
       case 'Communication':
         return this.data.find(d => d.id === id)
+      case 'Other':
+        return this.data2.find(d => d.id === id)
       default:
         return this.data.find(d => d.id === id)
     }
@@ -59,6 +61,11 @@ export class StorageService {
           id: d.id,
           name: d.name
         }))
+      case 'Other':
+        return this.data2.map(d => ({
+          id: d.id,
+          name: d.name
+      }))
       default:
         return this.data.map(d => ({
           id: d.id,
@@ -370,6 +377,93 @@ export class StorageService {
     // },
   ]
 
+  /**
+   * Other
+   */
+  private data2: FullClass[] = [
+    {
+      id: 1,
+      name: 'L\'article partitif',
+      baseUrl: 'assets/other_a1/',
+      answersUrl: [
+        'Articles-Corrigés-0001.jpg',
+        'Articles-Corrigés-0002.jpg'
+      ],
+      page: [
+        {
+          id: 1,
+          imageUrl: 'Articles-0001.jpg',
+        },
+        {
+          id: 2,
+          imageUrl: 'Articles-0002.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+        {
+          id: 3,
+          imageUrl: 'Articles-0003.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+        {
+          id: 4,
+          imageUrl: 'Articles-0004.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+        {
+          id: 5,
+          imageUrl: 'Articles-0005.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+        {
+          id: 6,
+          imageUrl: 'Articles-0006.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+        {
+          id: 7,
+          imageUrl: 'Articles-0007.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+        {
+          id: 8,
+          imageUrl: 'Articles-0004.jpg',
+          audioUrl: [],
+          notes: ''
+        },
+      ]
+    },
+    // {
+    //   id: 4647,
+    //   name: '46-47: Louer un appartament',
+    //   baseUrl: 'assets/gram_a1/',
+    //   answersUrl: [
+    //     'Compréhension Orale_page-0112.jpg',
+    //     'Compréhension Orale_page-0125.jpg'
+    //   ],
+    //   page: [
+    //     {
+    //       id: 1,
+    //       imageUrl: 'Compréhension Orale_page-0046.jpg',
+    //       audioUrl: [],
+    //       notes: ''
+    //     },
+    //     {
+    //       id: 2,
+    //       imageUrl: 'Compréhension Orale_page-0047.jpg',
+    //       audioUrl: [],
+    //       notes: ''
+    //     },
+        
+    //   ]
+    // },
+  ]
+
   private books: Book[] = [
     {
       name: 'Communication',
@@ -383,11 +477,11 @@ export class StorageService {
       storageName: 'A1_GRAMMAR_COMP',
       data: this.data1
     },
-    // {
-    //   name: '',
-    //   level: '',
-    //   storageName: ''
-    // },
+    {
+      name: 'Other',
+      level: 'A1',
+      data: this.data2
+    },
     // {
     //   name: '',
     //   level: '',
