@@ -1,3 +1,4 @@
+import { Chapter } from './../../models/chapter.model';
 import { FullClass } from './../../models/full-class.model';
 import { StorageService } from './../../storage/storage.service';
 import { Component } from '@angular/core';
@@ -7,10 +8,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { Book } from '../../models/notes.model';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule,MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [CommonModule,RouterModule,MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -31,6 +33,10 @@ export class HeaderComponent {
     return this.storage.currentBook();
   }
 
+  isCurrentChapter(chapter: string): boolean {
+    return this.storage.currentChapter()?.name === chapter;
+  }
+
   private saveCurrentBook(book: Book): void {
 
     if (this.isBrowser()) {
@@ -47,5 +53,13 @@ export class HeaderComponent {
 
   changeChapter(chapter: FullClass): void {
     this.storage.currentChapter.set(chapter)
+  }
+
+  download(): void {
+    this.storage.exportNotes();
+  }
+
+  upload(event: Event): void {
+    this.storage.importNotes(event, 'previous');
   }
 }

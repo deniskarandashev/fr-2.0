@@ -18,12 +18,26 @@
         <h2>
             {{ getCurrentBook() ? getCurrentBook().name : '' }}
         </h2>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" (click)="download()">
+            <mat-icon>download</mat-icon>
+        </button>
+        
+        <button mat-icon-button class="example-icon" (click)="fileInput.click()">
+            <mat-icon>upload</mat-icon>
+        </button>
+        <input #fileInput type="file" (change)="upload($event)" accept=".json" hidden />
     </mat-toolbar-row>
     <mat-toolbar-row>
         @if (books && getCurrentBook()) {
 
         @for(chapter of getCurrentBook().data; track $index) {
-        <a (click)="changeChapter(chapter)" mat-button [routerLink]="['/chapter', chapter.id]">{{ chapter.id + '. ' + chapter.name }}</a>
+            <a 
+                (click)="changeChapter(chapter)" 
+                mat-button 
+                [routerLink]="['/chapter', chapter.id]"
+                [ngClass]="{active: isCurrentChapter(chapter.name)}"
+            >{{ chapter.name }}</a>
         }
 
         }

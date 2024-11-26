@@ -1,7 +1,13 @@
+import { data_1 } from './db/data_1';
 import { AllNotes, Book } from './../models/notes.model';
-import { Injectable, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { FullClass } from '../models/full-class.model';
 import { Chapter } from '../models/chapter.model';
+import { BooksEnum } from '../models/books.enum';
+import { data_2 } from './db/data_2';
+import { data_3 } from './db/data_3';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +34,12 @@ export class StorageService {
         this.currentBook.set(book)
       }
     }  
+
+    if (this.isBrowser()) {
+      window.addEventListener('beforeunload', () => {
+        this.exportNotes('on-app-close');
+    });
+    }
   }
 
   isBrowser(): boolean {
@@ -37,65 +49,63 @@ export class StorageService {
   // TODO: fix
   getChapter(id: number): FullClass | undefined {
     switch(this.currentBook().name) {
-      case 'Compréhension Orale':
-        return this.data1.find(d => d.id === id)
-      case 'Communication':
-        return this.data.find(d => d.id === id)
-      case 'Other':
-        return this.data2.find(d => d.id === id)
+      case BooksEnum.A1_CO:
+        return data_3.find(d => d.id === id)
+      case BooksEnum.A1_COMM:
+        return data_1.find(d => d.id === id)
+      case BooksEnum.A1_GRAMM_EN_CONTEXT:
+        return data_2.find(d => d.id === id)
       default:
-        return this.data.find(d => d.id === id)
+        return data_3.find(d => d.id === id)
     }
   }
 
   // TODO: fix  
   getChapters(): Chapter[] {
     switch(this.currentBook().name) {
-      case 'Compréhension Orale':
-        return this.data1.map(d => ({
+      case BooksEnum.A1_CO:
+        return data_3.map(d => ({
           id: d.id,
           name: d.name
         }))
-      case 'Communication':
-        return this.data.map(d => ({
+      case BooksEnum.A1_COMM:
+        return data_1.map(d => ({
           id: d.id,
           name: d.name
         }))
-      case 'Other':
-        return this.data2.map(d => ({
+      case BooksEnum.A1_GRAMM_EN_CONTEXT:
+        return data_2.map(d => ({
           id: d.id,
           name: d.name
       }))
       default:
-        return this.data.map(d => ({
+        return data_3.map(d => ({
           id: d.id,
           name: d.name
         }))
     }
-    return this.data.map(d => ({
-      id: d.id,
-      name: d.name
-    }))
   }
 
   getBooks(): Book[] {
     return this.books;
   }
 
-  exportNotes(): void {
+  exportNotes(comment?: string): void {
     const dataStr = JSON.stringify(this.notes(), null, 2); // Преобразуем объект в строку JSON
     const blob = new Blob([dataStr], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);
   
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'notes.json'; // Имя файла
+
+    const date = new Date();
+    a.download = `Notes-${comment ? comment + '-' : ''}${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}.json`; // Имя файла
     a.click();
   
     window.URL.revokeObjectURL(url); // Освобождаем ресурс
   }
   
-  importNotes(event: Event): void {
+  importNotes(event: Event, comment?: string): void {
     const input = event.target as HTMLInputElement;
   
     if (!input.files?.length) {
@@ -108,7 +118,9 @@ export class StorageService {
     reader.onload = (e) => {
       try {
         const importedData = JSON.parse(e.target?.result as string); // Парсим содержимое файла
+        this.exportNotes(comment);
         this.notes.set(importedData); // Обновляем объект
+        localStorage.setItem('NOTES_FR', JSON.stringify(importedData));
         console.log('Импортированные данные:', this.notes());
       } catch (error) {
         console.error('Ошибка при импорте файла JSON:', error);
@@ -118,369 +130,23 @@ export class StorageService {
     reader.readAsText(file);
   }
 
-
-  /**
-   * Communication A1
-   */
-  private data: FullClass[] = [
-    {
-      id: 4,
-      name: 'Chez moi',
-      baseUrl: 'assets/sam_a1/',
-      answersUrl: [
-        'Communication_essentielle_A1_page-0144.jpg',
-        'Communication_essentielle_A1_page-0145.jpg'
-      ],
-      page: [
-        {
-          id: 1,
-          imageUrl: 'Communication_essentielle_A1_page-0030.jpg',
-          audioUrl: [38],
-          notes: ''
-        },
-        {
-          id: 2,
-          imageUrl: 'Communication_essentielle_A1_page-0031.jpg',
-          audioUrl: [39],
-          notes: ''
-        },
-        {
-          id: 3,
-          imageUrl: 'Communication_essentielle_A1_page-0032.jpg',
-          audioUrl: [40,41,42],
-          notes: ''
-        },
-        {
-          id: 4,
-          imageUrl: 'Communication_essentielle_A1_page-0033.jpg',
-          audioUrl: [43],
-          notes: ''
-        },
-        {
-          id: 5,
-          imageUrl: 'Communication_essentielle_A1_page-0034.jpg',
-          audioUrl: [44,45,46,47,48],
-          notes: ''
-        },
-        {
-          id: 6,
-          imageUrl: 'Communication_essentielle_A1_page-0035.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-      ]
-    },
-    {
-      id: 5,
-      name: 'Un problème domestique ?',
-      baseUrl: 'assets/sam_a1/',
-      answersUrl: [
-        'Communication_essentielle_A1_page-0145.jpg',
-        'Communication_essentielle_A1_page-0146.jpg'
-      ],
-      page: [
-        {
-          id: 1,
-          imageUrl: 'Communication_essentielle_A1_page-0036.jpg',
-          audioUrl: [49],
-          notes: ''
-        },
-        {
-          id: 2,
-          imageUrl: 'Communication_essentielle_A1_page-0037.jpg',
-          audioUrl: [50],
-          notes: ''
-        },
-        {
-          id: 3,
-          imageUrl: 'Communication_essentielle_A1_page-0038.jpg',
-          audioUrl: [51,52,53],
-          notes: ''
-        },
-        {
-          id: 4,
-          imageUrl: 'Communication_essentielle_A1_page-0039.jpg',
-          audioUrl: [54,55],
-          notes: ''
-        },
-        {
-          id: 5,
-          imageUrl: 'Communication_essentielle_A1_page-0040.jpg',
-          audioUrl: [56,57,58,59,60],
-          notes: ''
-        },
-        {
-          id: 6,
-          imageUrl: 'Communication_essentielle_A1_page-0040.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-      ]
-    },
-  ]
-
-  /**
-   * CO A1
-   */
-
-  private data1: FullClass[] = [
-    {
-      id: 4243,
-      name: '42-45: Garder la forme',
-      baseUrl: 'assets/gram_a1/',
-      answersUrl: [
-        'Compréhension Orale_page-0112.jpg',
-        'Compréhension Orale_page-0125.jpg'
-      ],
-      page: [
-        {
-          id: 1,
-          imageUrl: 'Compréhension Orale_page-0042.jpg',
-          audioUrl: [28],
-          notes: ''
-        },
-        {
-          id: 2,
-          imageUrl: 'Compréhension Orale_page-0043.jpg',
-          audioUrl: [28],
-          notes: ''
-        },
-        {
-          id: 3,
-          imageUrl: 'Compréhension Orale_page-0044.jpg',
-          audioUrl: [28],
-          notes: ''
-        },
-        {
-          id: 4,
-          imageUrl: 'Compréhension Orale_page-0045.jpg',
-          audioUrl: [28],
-          notes: ''
-        },
-      ]
-    },
-    {
-      id: 4647,
-      name: '46-47: Louer un appartament',
-      baseUrl: 'assets/gram_a1/',
-      answersUrl: [
-        'Compréhension Orale_page-0112.jpg',
-        'Compréhension Orale_page-0125.jpg'
-      ],
-      page: [
-        {
-          id: 1,
-          imageUrl: 'Compréhension Orale_page-0046.jpg',
-          audioUrl: [29],
-          notes: ''
-        },
-        {
-          id: 2,
-          imageUrl: 'Compréhension Orale_page-0047.jpg',
-          audioUrl: [29],
-          notes: ''
-        },
-        
-      ]
-    },
-    // {
-    //   id: 4243,
-    //   name: '42-43: Garder la forme',
-    //   baseUrl: 'assets/gram_a1/',
-    //   answersUrl: [
-    //     'Compréhension Orale_page-0112.jpg',
-    //     'Compréhension Orale_page-0125.jpg'
-    //   ],
-    //   page: [
-    //     {
-    //       id: 1,
-    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //     {
-    //       id: 2,
-    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //   ]
-    // },
-    // {
-    //   id: 4243,
-    //   name: '42-43: Garder la forme',
-    //   baseUrl: 'assets/gram_a1/',
-    //   answersUrl: [
-    //     'Compréhension Orale_page-0112.jpg',
-    //     'Compréhension Orale_page-0125.jpg'
-    //   ],
-    //   page: [
-    //     {
-    //       id: 1,
-    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //     {
-    //       id: 2,
-    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //   ]
-    // },
-    // {
-    //   id: 4243,
-    //   name: '42-43: Garder la forme',
-    //   baseUrl: 'assets/gram_a1/',
-    //   answersUrl: [
-    //     'Compréhension Orale_page-0112.jpg',
-    //     'Compréhension Orale_page-0125.jpg'
-    //   ],
-    //   page: [
-    //     {
-    //       id: 1,
-    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //     {
-    //       id: 2,
-    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //   ]
-    // },
-    // {
-    //   id: 4243,
-    //   name: '42-43: Garder la forme',
-    //   baseUrl: 'assets/gram_a1/',
-    //   answersUrl: [
-    //     'Compréhension Orale_page-0112.jpg',
-    //     'Compréhension Orale_page-0125.jpg'
-    //   ],
-    //   page: [
-    //     {
-    //       id: 1,
-    //       imageUrl: 'Compréhension Orale_page-0042.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //     {
-    //       id: 2,
-    //       imageUrl: 'Compréhension Orale_page-0043.jpg',
-    //       audioUrl: [28],
-    //       notes: ''
-    //     },
-    //   ]
-    // },
-  ]
-
-  /**
-   * Other
-   */
-  private data2: FullClass[] = [
-    {
-      id: 1,
-      name: 'L\'article partitif',
-      baseUrl: 'assets/other_a1/',
-      answersUrl: [
-        'Articles-Corrigés-0001.jpg',
-        'Articles-Corrigés-0002.jpg'
-      ],
-      page: [
-        {
-          id: 1,
-          imageUrl: 'Articles-0001.jpg',
-        },
-        {
-          id: 2,
-          imageUrl: 'Articles-0002.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-        {
-          id: 3,
-          imageUrl: 'Articles-0003.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-        {
-          id: 4,
-          imageUrl: 'Articles-0004.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-        {
-          id: 5,
-          imageUrl: 'Articles-0005.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-        {
-          id: 6,
-          imageUrl: 'Articles-0006.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-        {
-          id: 7,
-          imageUrl: 'Articles-0007.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-        {
-          id: 8,
-          imageUrl: 'Articles-0004.jpg',
-          audioUrl: [],
-          notes: ''
-        },
-      ]
-    },
-    // {
-    //   id: 4647,
-    //   name: '46-47: Louer un appartament',
-    //   baseUrl: 'assets/gram_a1/',
-    //   answersUrl: [
-    //     'Compréhension Orale_page-0112.jpg',
-    //     'Compréhension Orale_page-0125.jpg'
-    //   ],
-    //   page: [
-    //     {
-    //       id: 1,
-    //       imageUrl: 'Compréhension Orale_page-0046.jpg',
-    //       audioUrl: [],
-    //       notes: ''
-    //     },
-    //     {
-    //       id: 2,
-    //       imageUrl: 'Compréhension Orale_page-0047.jpg',
-    //       audioUrl: [],
-    //       notes: ''
-    //     },
-        
-    //   ]
-    // },
-  ]
-
   private books: Book[] = [
     {
-      name: 'Communication',
+      name: BooksEnum.A1_COMM,
       level: 'A1',
       storageName: 'A1_ACTIVE_COMM',
-      data: this.data
+      data: data_1
     },
     {
-      name: 'Compréhension Orale',
+      name: BooksEnum.A1_CO,
       level: 'A1',
       storageName: 'A1_GRAMMAR_COMP',
-      data: this.data1
+      data: data_3
     },
     {
-      name: 'Other',
+      name: BooksEnum.A1_GRAMM_EN_CONTEXT,
       level: 'A1',
-      data: this.data2
+      data: data_2
     },
     // {
     //   name: '',

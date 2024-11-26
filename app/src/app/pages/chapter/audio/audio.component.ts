@@ -34,8 +34,19 @@ export class AudioComponent {
     if (this.storage.currentBook()?.name === this.storage.getBooks()[0].name) {
       return this.data.baseUrl + 'audio/piste' + audio + '.mp3'
     } else {
-      return this.data.baseUrl + 'audio/' + audio + '.mp3'
+      return this.data.baseUrl + this.getLink(audio);
     }
     
+  }
+
+  private getLink(audio: string | number): string {
+    return this.isContainType(audio) ? 'audio/' + audio : ('audio/' + audio + '.mp3');
+  }
+
+  private isContainType(audio: string | number): boolean {
+    if (typeof audio === 'string') {
+      return audio.includes('.mp3')
+    }
+    return false;
   }
 }

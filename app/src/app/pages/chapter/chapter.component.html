@@ -1,9 +1,3 @@
-@if (currentChapter.id && currentChapter.name) {
-    <h2>{{ currentChapter.id }}: {{ currentChapter.name }}</h2>
-}
-
-<!-- <button mat-stroked-button (click)="goBack()">Назад</button> -->
-
 @if (data) {
     @for (page of data.page; track $index) {
         <section class="container">

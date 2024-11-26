@@ -28,6 +28,7 @@ export class MyAnswersInputComponent implements OnInit {
       this.currentBookName = this.storage.currentBook().name ?? this.storage.getBooks()[1].name ?? '';
       this.chapterName = this.storage.currentChapter().name ?? '';
 
+      this.allNotes = this.storage.notes() ?? {};
       this.inputNotes = this.allNotes[this.currentBookName]?.[this.chapterName]?.[this.chapterPageName] ?? '';
     })
   }
