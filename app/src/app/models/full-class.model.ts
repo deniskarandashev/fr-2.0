@@ -9,6 +9,7 @@ export interface FullClass {
     baseUrl: string;
     answersUrl: string[];
     page: PageData[];
+    isIdHidden?: boolean
 }
 
 export interface PageData {

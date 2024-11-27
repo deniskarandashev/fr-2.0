@@ -9,3 +9,8 @@
   .active {
     background-color: antiquewhite;
   }
+
+  .chapters-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}

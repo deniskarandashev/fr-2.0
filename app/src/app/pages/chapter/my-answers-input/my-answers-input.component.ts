@@ -64,4 +64,46 @@ export class MyAnswersInputComponent implements OnInit {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
   
+  onKeyDown(event: KeyboardEvent): void {
+    console.log('============', event.key)
+    // Проверяем нажатие клавиши Enter
+    if (event.key === 'Enter') {
+      const textarea = event.target as HTMLTextAreaElement;
+
+      // Получаем текст до каретки
+      const textBeforeCaret = textarea.value.substring(0, textarea.selectionStart);
+      const lines = textBeforeCaret.split('\n'); // Разделяем текст на строки
+      const lastLine = lines[lines.length - 1].trim(); // Последняя строка
+      
+      // Проверяем, оканчивается ли последняя строка на число с точкой
+      const match = lastLine.match(/^(\d+)\. /);
+      if (match) {
+        event.preventDefault(); // Предотвращаем стандартное поведение Enter
+        
+        const nextNumber = parseInt(match[1], 10) + 1; // Следующее число
+        const textAfterCaret = textarea.value.substring(textarea.selectionStart); // Текст после каретки
+        
+        // Вставляем новую строку с числом
+        this.inputNotes =
+          textBeforeCaret + '\n' + nextNumber + '. ' + textAfterCaret;
+
+        // Устанавливаем каретку в нужное место
+        setTimeout(() => {
+          textarea.selectionStart = textarea.selectionEnd = textBeforeCaret.length + nextNumber.toString().length + 3; // '\n2. '.length
+        });
+      }
+    } else if (event.key === '²') {
+      const textarea = event.target as HTMLTextAreaElement;
+
+      // Вставляем новую строку с числом
+      for(let i = 1; i <= 10; i++) {
+        this.inputNotes +=  i + '. \n';
+      }
+
+      setTimeout(() => {
+        textarea.selectionStart = textarea.selectionEnd = this.inputNotes.indexOf('1. ') + '1. '.length;
+        textarea.focus(); // Фокусируем на textarea
+      }, 0);
+    }
+  }
 }

@@ -1,9 +1,15 @@
 <mat-tab-group>
-    <mat-tab label="Hide input"></mat-tab>
     <mat-tab label="Show input">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" isActive="true">
             <mat-label>Leave a note</mat-label>
-            <textarea matInput placeholder="Write here" (input)="onInputChange($event)" [ngModel]="inputNotes"></textarea>
+            <textarea 
+                matInput 
+                placeholder="Notes" 
+                (input)="onInputChange($event)" 
+                (keydown)="onKeyDown($event)"
+                [ngModel]="inputNotes"
+            ></textarea>
         </mat-form-field>
     </mat-tab>
+    <mat-tab label="Hide input"></mat-tab>
 </mat-tab-group>
