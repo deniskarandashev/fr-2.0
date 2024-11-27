@@ -13,8 +13,10 @@ import {MatInputModule} from '@angular/material/input';
 import { AudioComponent } from './audio/audio.component';
 import { AnswersComponent } from "./answers/answers.component";
 import { MyAnswersInputComponent } from './my-answers-input/my-answers-input.component';
-import { NotesService } from '../../services/notes-service.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChapterNotes } from '../../models/notes.model';
+import { Chapter } from '../../models/chapter.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chapter',
@@ -31,7 +33,9 @@ import { ChapterNotes } from '../../models/notes.model';
     MatInputModule,
     AudioComponent,
     AnswersComponent,
-    MyAnswersInputComponent
+    MyAnswersInputComponent,
+    MatCheckboxModule,
+    FormsModule
 ],
   templateUrl: './chapter.component.html',
   styleUrl: './chapter.component.scss'
@@ -40,6 +44,7 @@ export class ChapterComponent {
   chapterId = '';
   // data!: FullClass | undefined;
   chapterNotes!: ChapterNotes;
+  checkedChapters = {}
 
   constructor(
     private route: ActivatedRoute, 
@@ -61,5 +66,9 @@ export class ChapterComponent {
 
   get data(): FullClass | undefined {
     return this.storage.getChapter(this.currentChapter.id)
+  }
+
+  get chapters(): Chapter[] {
+    return this.storage.getChapters();
   }
 }

@@ -20,7 +20,7 @@ export class HeaderComponent {
 
   books!: Book[]
 
-  constructor(private storage: StorageService) {
+  constructor(protected storage: StorageService) {
     this.books = storage.getBooks();
   }
 
@@ -51,8 +51,8 @@ export class HeaderComponent {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 
-  changeChapter(chapter: FullClass): void {
-    this.storage.currentChapter.set(chapter)
+  changeChapter(chapter?: FullClass): void {
+    this.storage.currentChapter.set(chapter ?? {} as FullClass);
   }
 
   download(): void {

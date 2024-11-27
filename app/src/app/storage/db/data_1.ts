@@ -1,9 +1,11 @@
 import { FullClass } from "../../models/full-class.model";
 
 /**
- * Communication A1
+ * Communication essentielle A1
  */
 export const data_1: FullClass[] = [
+    // id: 3,
+    // name: 'C’est la fête !',
     {
         id: 3,
         name: 'C’est la fête !',
@@ -51,13 +53,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 4,
+    // name: 'Chez moi',
     {
         id: 4,
         name: 'Chez moi',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0144.jpg',
-            'Communication_essentielle_A1_page-0145.jpg'
+            'Communication_essentielle_A1_page-0145.jpg',
+            'Communication_essentielle_A1_page-0146.jpg'
         ],
         page: [
             {
@@ -98,13 +103,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 5,
+    // name: 'Un problème domestique ?',
     {
         id: 5,
         name: 'Un problème domestique ?',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0146.jpg',
+            'Communication_essentielle_A1_page-0147.jpg'
         ],
         page: [
             {
@@ -145,13 +153,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 6,
+    // name: 'Le règlement de l’immeuble',
     {
         id: 6,
         name: 'Le règlement de l’immeuble',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0148.jpg',
+            'Communication_essentielle_A1_page-0149.jpg'
         ],
         page: [
             {
@@ -192,13 +203,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 7,
+    // name: 'À l’université',
     {
         id: 7,
         name: 'À l’université',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0149.jpg',
+            'Communication_essentielle_A1_page-0150.jpg'
         ],
         page: [
             {
@@ -239,13 +253,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 8,
+    // name: 'Ma journée',
     {
         id: 8,
         name: 'Ma journée',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0150.jpg',
+            'Communication_essentielle_A1_page-0151.jpg'
         ],
         page: [
             {
@@ -286,13 +303,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 9,
+    // name: 'Au travail',
     {
         id: 9,
         name: 'Au travail',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0151.jpg',
+            'Communication_essentielle_A1_page-0152.jpg'
         ],
         page: [
             {
@@ -333,13 +353,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 10,
+    // name: 'Dans une boutique de vêtements',
     {
         id: 10,
         name: 'Dans une boutique de vêtements',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0152.jpg',
+            'Communication_essentielle_A1_page-0153.jpg'
         ],
         page: [
             {
@@ -380,13 +403,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 11,
+    // name: 'Au restaurant',
     {
         id: 11,
         name: 'Au restaurant',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0154.jpg',
+            'Communication_essentielle_A1_page-0155.jpg'
         ],
         page: [
             {
@@ -427,13 +453,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 12,
+    // name: 'À la boulangerie',
     {
         id: 12,
         name: 'À la boulangerie',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0155.jpg',
+            'Communication_essentielle_A1_page-0156.jpg'
         ],
         page: [
             {
@@ -474,13 +503,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 13,
+    // name: 'Chez le médecin',
     {
         id: 13,
         name: 'Chez le médecin',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0156.jpg',
+            'Communication_essentielle_A1_page-0157.jpg'
         ],
         page: [
             {
@@ -521,13 +553,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 14,
+    // name: 'À la pharmacie',
     {
         id: 14,
         name: 'À la pharmacie',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0157.jpg',
+            'Communication_essentielle_A1_page-0158.jpg'
         ],
         page: [
             {
@@ -568,13 +603,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 15,
+    // name: 'Dans les transports publics',
     {
         id: 15,
         name: 'Dans les transports publics',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0158.jpg',
+            'Communication_essentielle_A1_page-0159.jpg'
         ],
         page: [
             {
@@ -615,13 +653,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 16,
+    // name: 'Train ou covoiturage ?',
     {
         id: 16,
         name: 'Train ou covoiturage ?',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0159.jpg',
+            'Communication_essentielle_A1_page-0160.jpg'
         ],
         page: [
             {
@@ -662,13 +703,16 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // id: 17,
+    // name: 'À l’aéroport',
     {
         id: 17,
         name: 'À l’aéroport',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
-            'Communication_essentielle_A1_page-0145.jpg',
-            'Communication_essentielle_A1_page-0146.jpg'
+            'Communication_essentielle_A1_page-0160.jpg',
+            'Communication_essentielle_A1_page-0161.jpg'
         ],
         page: [
             {
@@ -709,4 +753,52 @@ export const data_1: FullClass[] = [
             },
         ]
     },
+
+    // {
+    //     id: 17,
+    //     name: 'À l’aéroport',
+    //     baseUrl: 'assets/sam_a1/',
+    //     answersUrl: [
+    //         'Communication_essentielle_A1_page-0160.jpg',
+    //         'Communication_essentielle_A1_page-0161.jpg'
+    //     ],
+    //     page: [
+    //         {
+    //             id: 1,
+    //             imageUrl: 'Communication_essentielle_A1_page-0108.jpg',
+    //             audioUrl: [182],
+    //             notes: ''
+    //         },
+    //         {
+    //             id: 2,
+    //             imageUrl: 'Communication_essentielle_A1_page-0109.jpg',
+    //             audioUrl: [183],
+    //             notes: ''
+    //         },
+    //         {
+    //             id: 3,
+    //             imageUrl: 'Communication_essentielle_A1_page-0110.jpg',
+    //             audioUrl: [184,185,186],
+    //             notes: ''
+    //         },
+    //         {
+    //             id: 4,
+    //             imageUrl: 'Communication_essentielle_A1_page-0111.jpg',
+    //             audioUrl: [187],
+    //             notes: ''
+    //         },
+    //         {
+    //             id: 5,
+    //             imageUrl: 'Communication_essentielle_A1_page-0112.jpg',
+    //             audioUrl: [188,189,190,191,192],
+    //             notes: ''
+    //         },
+    //         {
+    //             id: 6,
+    //             imageUrl: 'Communication_essentielle_A1_page-0113.jpg',
+    //             audioUrl: [],
+    //             notes: ''
+    //         },
+    //     ]
+    // },
 ]

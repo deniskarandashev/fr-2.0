@@ -11,5 +11,16 @@
             </mat-card>
         </section>
     }
+} @else {
+    <section class="home">
+        <div class="home-chapters-list">
+            @for(chapter of chapters; track $index) {
+                <!-- <mat-checkbox [(ngModel)]="checkedChapters[chapter.name]"> -->
+                    <span>{{ ($index + 1)  + '. ' + chapter.name }}</span>
+                <!-- </mat-checkbox> -->
+            }
+        </div>
+        
+    </section>
 }
 

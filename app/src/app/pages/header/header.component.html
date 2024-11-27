@@ -28,8 +28,17 @@
         </button>
         <input #fileInput type="file" (change)="upload($event)" accept=".json" hidden />
     </mat-toolbar-row>
+
     <mat-toolbar-row class="chapters-list">
         @if (books && getCurrentBook()) {
+
+            <a  
+                mat-button 
+                (click)="changeChapter()"
+                [ngClass]="{active: !storage.currentChapter()?.name}"
+            >
+            Home
+        </a>
 
             @for(chapter of getCurrentBook().data; track $index) {
                 <a 
