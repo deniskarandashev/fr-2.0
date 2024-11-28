@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { StorageService } from '../../storage/storage.service';
@@ -40,9 +40,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './chapter.component.html',
   styleUrl: './chapter.component.scss'
 })
-export class ChapterComponent {
+export class ChapterComponent implements OnInit, OnDestroy {
+  isMobile = false;
   chapterId = '';
-  // data!: FullClass | undefined;
   chapterNotes!: ChapterNotes;
   checkedChapters = {}
 
@@ -70,5 +70,25 @@ export class ChapterComponent {
 
   get chapters(): Chapter[] {
     return this.storage.getChapters();
+  }
+
+
+  // screen size
+  screenWidth: number = window.innerWidth;
+  private resizeListener = () => this.updateScreenWidth();
+
+  ngOnInit() {
+    this.updateScreenWidth();
+    window.addEventListener('resize', this.resizeListener);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.resizeListener);
+  }
+
+  private updateScreenWidth() {
+    this.screenWidth = window.innerWidth;
+    console.log(`Ширина экрана обновлена: ${this.screenWidth}px`);
+    this.isMobile = this.screenWidth < 600
   }
 }

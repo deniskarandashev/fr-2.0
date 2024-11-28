@@ -1,27 +1,49 @@
 @if (data && page) {
     @for (audio of page.audioUrl; track $index) {
-        <div class="audio-row">
-            <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    
-                    <mat-panel-title> {{ audio }} </mat-panel-title>
-                    <mat-panel-description>
-                        <audio controls controlslist="timeline" [src]="getSrc(audio)"></audio>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-              
-                  <mat-form-field>
-                    <mat-label>First name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-              
-                  <mat-form-field>
-                    <mat-label>Age</mat-label>
-                    <input matInput type="number" min="1" />
-                  </mat-form-field>
-                </mat-expansion-panel>
-              </mat-accordion>
+      @if (isMobile) {
+        <mat-card class="transcript-mobile">
+          <audio 
+                        controls 
+                        controlslist="timeline" 
+                        [src]="getSrc(audio)"
+                      ></audio>
+       
+        <div class="transcript-mobile">
+          <span [innerHTML]="getAudioScript(audio)"></span>
         </div>
+      </mat-card>
+      }
+      @else {
+        <div class="audio-row">
+          <mat-accordion class="example-headers-align" multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  
+                  <mat-panel-title> {{ audio }} </mat-panel-title>
+                  <mat-panel-description>
+                      <audio 
+                        controls 
+                        controlslist="timeline" 
+                        [src]="getSrc(audio)"
+                        class="audio"
+                      ></audio>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+            
+                <span [innerHTML]="getAudioScript(audio)"></span>
+                <!-- {{ getAudioScript(audio) }} -->
+                <!-- <mat-form-field>
+                  <mat-label></mat-label>
+                  <input matInput />
+                </mat-form-field>
+            
+                <mat-form-field>
+                  <mat-label>Age</mat-label>
+                  <input matInput type="number" min="1" />
+                </mat-form-field> -->
+              </mat-expansion-panel>
+            </mat-accordion>
+      </div>
+      }
     }
 }

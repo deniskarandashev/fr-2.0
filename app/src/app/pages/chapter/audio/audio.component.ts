@@ -8,6 +8,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { audioScript } from '../../../storage/db/audio-scripts';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-audio',
@@ -19,7 +21,8 @@ import {MatInputModule} from '@angular/material/input';
     MatExpansionModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CommonModule
   ],
   templateUrl: './audio.component.html',
   styleUrl: './audio.component.scss'
@@ -27,6 +30,7 @@ import {MatInputModule} from '@angular/material/input';
 export class AudioComponent {
   @Input() page!: PageData;
   @Input() data!: FullClass;
+  @Input() isMobile = false;
 
   constructor(private storage: StorageService) {}
 
@@ -37,6 +41,10 @@ export class AudioComponent {
       return this.data.baseUrl + this.getLink(audio);
     }
     
+  }
+
+  getAudioScript(audioName: string | number): string {
+    return audioScript[this.data.baseUrl]?.[audioName]
   }
 
   private getLink(audio: string | number): string {

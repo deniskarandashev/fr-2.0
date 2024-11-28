@@ -1,23 +1,25 @@
 @if (data) {
     @for (page of data.page; track $index) {
-        <section class="container">
-            <mat-card appearance="outlined" class="section">
-                <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl" [imageUrl]="page.imageUrl ?? ''" ></app-answers>
-            </mat-card>
-            <mat-card appearance="outlined" class="section section-1">
-                <app-audio [page]="page" [data]="data"></app-audio>
-                <app-my-answers-input [chapterName]="data.name" [chapterPageName]="page.imageUrl?.replace('.', '_') ?? ''"></app-my-answers-input>
-                <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl"></app-answers>
-            </mat-card>
-        </section>
+        @if (isMobile) {
+            <app-audio [page]="page" [data]="data" [isMobile]="isMobile"></app-audio>
+        } @else {
+            <section class="container">
+                <mat-card appearance="outlined" class="section">
+                    <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl" [imageUrl]="page.imageUrl ?? ''" ></app-answers>
+                </mat-card>
+                <mat-card appearance="outlined" class="section section-1">
+                    <app-audio [page]="page" [data]="data"></app-audio>
+                    <app-my-answers-input [chapterName]="data.name" [chapterPageName]="page.imageUrl?.replace('.', '_') ?? ''"></app-my-answers-input>
+                    <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl"></app-answers>
+                </mat-card>
+            </section>
+        }
     }
 } @else {
     <section class="home">
         <div class="home-chapters-list">
             @for(chapter of chapters; track $index) {
-                <!-- <mat-checkbox [(ngModel)]="checkedChapters[chapter.name]"> -->
-                    <span>{{ ($index + 1)  + '. ' + chapter.name }}</span>
-                <!-- </mat-checkbox> -->
+                <span>{{ ($index + 1)  + '. ' + chapter.name }}</span>
             }
         </div>
         

@@ -19,3 +19,7 @@ export interface PageData {
     answerUrl?: string[];
     notes?: string;
 }
+
+export interface AudioSctipt {
+    [key: string]: string;
+}
