@@ -1,0 +1,33 @@
+@if (isRecording) {
+    <button mat-icon-button  (click)="stopRecording()">
+        <mat-icon>stop</mat-icon>
+    </button>
+} @else {
+    <button mat-icon-button  (click)="startRecording()">
+        <mat-icon>mic</mat-icon>
+    </button>
+}
+
+<!-- <button (click)="onRecordingClick(isRecording)">{{isRecording ? 'Stop Recording' : 'Start Recording'}}</button> -->
+
+@if (audioUrl) {
+    
+    <div class="flex-row">
+        <h3>Recorded Audio</h3>
+        <button mat-icon-button  (click)="saveAudio()">
+            <mat-icon>saveAudio</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteAudio()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <audio controls [src]="audioUrl"></audio> 
+}
+
+@if (resultText) {
+
+    <!-- @for (t of resultText; track $index) {
+        <p>{{ resultText }}</p>
+    } -->
+    <p>{{ resultText }}</p>
+}

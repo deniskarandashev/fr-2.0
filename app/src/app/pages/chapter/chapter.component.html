@@ -9,6 +9,7 @@
                 </mat-card>
                 <mat-card appearance="outlined" class="section section-1">
                     <app-audio [page]="page" [data]="data"></app-audio>
+                    <app-audio-recorder></app-audio-recorder>
                     <app-my-answers-input [chapterName]="data.name" [chapterPageName]="page.imageUrl?.replace('.', '_') ?? ''"></app-my-answers-input>
                     <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl"></app-answers>
                 </mat-card>

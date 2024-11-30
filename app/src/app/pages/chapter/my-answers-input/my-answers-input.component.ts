@@ -65,7 +65,6 @@ export class MyAnswersInputComponent implements OnInit {
   }
   
   onKeyDown(event: KeyboardEvent): void {
-    console.log('============', event.key)
     // Проверяем нажатие клавиши Enter
     if (event.key === 'Enter') {
       const textarea = event.target as HTMLTextAreaElement;

@@ -17,6 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChapterNotes } from '../../models/notes.model';
 import { Chapter } from '../../models/chapter.model';
 import { FormsModule } from '@angular/forms';
+import { AudioRecorderComponent } from './audio-recorder/audio-recorder.component';
 
 @Component({
   selector: 'app-chapter',
@@ -35,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     AnswersComponent,
     MyAnswersInputComponent,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    AudioRecorderComponent
 ],
   templateUrl: './chapter.component.html',
   styleUrl: './chapter.component.scss'
