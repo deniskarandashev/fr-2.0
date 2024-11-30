@@ -1,0 +1,1 @@
+import{a as A,b as u}from"./chunk-GKFNBMDO.mjs";import{T as t,U as o,V as p,W as a,X as r,g as e}from"./chunk-WBTJRB7M.mjs";e();r();a();export{A as bootstrap,u as default,p as \u0275destroyAngularServerApp,t as \u0275extractRoutesAndCreateRouteTree,o as \u0275getOrCreateAngularServerApp};
