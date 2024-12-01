@@ -1,3 +1,7 @@
+@if (storage.isQuiz()) {
+    <app-quiz></app-quiz>
+}
+@else {
 @if (data) {
     @for (page of data.page; track $index) {
         @if (isMobile) {
@@ -26,4 +30,4 @@
         
     </section>
 }
-
+}

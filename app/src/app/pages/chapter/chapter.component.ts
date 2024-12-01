@@ -18,6 +18,7 @@ import { ChapterNotes } from '../../models/notes.model';
 import { Chapter } from '../../models/chapter.model';
 import { FormsModule } from '@angular/forms';
 import { AudioRecorderComponent } from './audio-recorder/audio-recorder.component';
+import { QuizComponent } from "../quiz/quiz.component";
 
 @Component({
   selector: 'app-chapter',
@@ -37,7 +38,8 @@ import { AudioRecorderComponent } from './audio-recorder/audio-recorder.componen
     MyAnswersInputComponent,
     MatCheckboxModule,
     FormsModule,
-    AudioRecorderComponent
+    AudioRecorderComponent,
+    QuizComponent
 ],
   templateUrl: './chapter.component.html',
   styleUrl: './chapter.component.scss'
@@ -51,7 +53,7 @@ export class ChapterComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute, 
     private location: Location,
-    private storage: StorageService
+    protected storage: StorageService
   ) {
     // this.chapterId = this.route.snapshot.paramMap.get('id') || '';
     this.chapterId = this.currentChapter?.id?.toString() ?? '0';

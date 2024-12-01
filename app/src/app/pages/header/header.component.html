@@ -18,6 +18,15 @@
         <h2>
             {{ getCurrentBook() ? getCurrentBook().name : '' }}
         </h2>
+        <button mat-icon-button class="example-icon" (click)="storage.isQuiz.set(!storage.isQuiz())">
+            @if (storage.isQuiz()) {
+                <mat-icon>book</mat-icon>
+            } 
+            @else {
+                <mat-icon>quiz</mat-icon>
+            }
+            
+        </button>
         <span class="example-spacer"></span>
         <button mat-icon-button class="example-icon" (click)="download()">
             <mat-icon>download</mat-icon>

@@ -67,7 +67,10 @@ export const data_2: FullClass[] = [
     baseUrl: 'assets/other_a1/',
     answersUrl: [
       'Corrigés_Chapitre_15_Passé_composé_page_0001.jpg',
-      'Corrigés_Chapitre_15_Passé_composé_page_0002.jpg'
+      'Corrigés_Chapitre_15_Passé_composé_page_0002.jpg',
+      'Formation_du_passé_composé_1.jpg',
+      'Formation_du_passé_composé_2.jpg',
+      'Formation_du_passé_composé_3.jpg',
     ],
     page: [
       {

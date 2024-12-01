@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
@@ -9,7 +9,7 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './audio-recorder.component.html',
   styleUrl: './audio-recorder.component.scss'
 })
-export class AudioRecorderComponent implements OnInit {
+export class AudioRecorderComponent implements OnInit, OnDestroy {
   private mediaRecorder!: MediaRecorder;
   private audioChunks: Blob[] = [];
   audioUrl: string | null = null;
@@ -22,6 +22,26 @@ export class AudioRecorderComponent implements OnInit {
   ngOnInit(): void {
     this.initializeRecorder();
     this.textRecognition();
+  }
+
+  ngOnDestroy(): void {
+    if (this.recognition) {
+      this.recognition.onresult = null;
+      this.recognition.onerror = null;
+      this.recognition.onend = null;
+      this.recognition.stop();
+    }
+    if (this.mediaRecorder) {
+      this.mediaRecorder.ondataavailable = null;
+      this.mediaRecorder.onstop = null;
+      this.mediaRecorder.onerror = null;
+      this.mediaRecorder.stream.getTracks().forEach(track => track.stop());
+    }
+    this.audioChunks = [];
+    if (this.audioUrl) {
+      URL.revokeObjectURL(this.audioUrl);
+      this.audioUrl = null;
+    }
   }
 
   textRecognition(): void {
@@ -39,11 +59,6 @@ export class AudioRecorderComponent implements OnInit {
     this.recognition.onresult = (event: any) => {
       this.resultText = event.results[0][0].transcript;
       this.cdr.detectChanges();
-    };
-
-    this.recognition.onend = () => {
-      console.log('Speech recognition ended');
-      this.recognition.start();  // Перезапуск распознавания
     };
 
     this.recognition.onerror = (event: any) => {
@@ -81,6 +96,11 @@ export class AudioRecorderComponent implements OnInit {
   }
 
   startRecording() {
+    console.log('this.mediaRecorder?.state', this.mediaRecorder?.state)
+    if (this.mediaRecorder?.state === 'recording') {
+      this.stopRecording();
+      this.recognition.stop();
+    }
     if (!this.isRecording) {
       this.mediaRecorder.start();
       this.isRecording = true;
@@ -94,6 +114,10 @@ export class AudioRecorderComponent implements OnInit {
       this.mediaRecorder.stop();
       this.isRecording = false;
       this.recognition.stop();
+      if (this.audioUrl) {
+        URL.revokeObjectURL(this.audioUrl); // Освобождаем старый URL
+        this.audioUrl = null;
+      }
       this.cdr.detectChanges();
     }
   }
@@ -102,7 +126,8 @@ export class AudioRecorderComponent implements OnInit {
     if (this.audioUrl) {
       const link = document.createElement('a');
       link.href = this.audioUrl;
-      link.download = 'audio_recording.wav';
+      const date = new Date();
+      link.download = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}-${date.getTime()}` + '_audio_recording.wav';
       link.click();
     }
   }

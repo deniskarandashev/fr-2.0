@@ -1,0 +1,21 @@
+<mat-card class="quiz-container">
+    <h2>Упражнение по *passé composé*</h2>
+    <p>Как будет <strong>{{ question.verb }}</strong> в *passé composé*?</p>
+  
+    <mat-list>
+      <mat-list-item
+        *ngFor="let option of question.options; let i = index"
+        (click)="checkAnswer(i)"
+        [class.correct]="selectedAnswer === i && isCorrectAnswer(i)"
+        [class.incorrect]="selectedAnswer === i && !isCorrectAnswer(i)"
+      >
+        {{ option }}
+      </mat-list-item>
+    </mat-list>
+  
+    <div *ngIf="feedback" class="feedback">
+      <p>{{ feedback }}</p>
+      <button mat-raised-button color="primary" (click)="nextQuestion()">Следующий вопрос</button>
+    </div>
+  </mat-card>
+  

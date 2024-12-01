@@ -14,6 +14,7 @@ import { data_3 } from './db/data_3';
 })
 export class StorageService {
 
+  isQuiz: WritableSignal<boolean> = signal<boolean>(false);
   currentBook: WritableSignal<Book> = signal<Book>({});
   notes: WritableSignal<AllNotes> = signal<AllNotes>({});
   currentChapter: WritableSignal<FullClass> = signal<FullClass>({} as FullClass);
