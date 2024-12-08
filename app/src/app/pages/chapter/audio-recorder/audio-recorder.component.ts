@@ -20,8 +20,8 @@ export class AudioRecorderComponent implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.initializeRecorder();
-    this.textRecognition();
+    // this.initializeRecorder();
+    // this.textRecognition();
   }
 
   ngOnDestroy(): void {

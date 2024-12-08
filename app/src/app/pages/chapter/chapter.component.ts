@@ -92,7 +92,6 @@ export class ChapterComponent implements OnInit, OnDestroy {
 
   private updateScreenWidth() {
     this.screenWidth = window.innerWidth;
-    console.log(`Ширина экрана обновлена: ${this.screenWidth}px`);
     this.isMobile = this.screenWidth < 600
   }
 }

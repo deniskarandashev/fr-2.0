@@ -1,8 +1,28 @@
 <mat-tab-group>
     @if (imageUrl) {
+        <!-- <mat-tab label="Book">
+            <img #image [src]="baseUrl + 'img/' + imageUrl" class="book-page" (load)="onImageLoad()">
+            <canvas #canvas></canvas>
+            <div class="controls">
+                <button mat-raised-button color="primary" (click)="clearCanvas()">Очистить</button>
+                <button mat-raised-button color="accent" (click)="saveLines()">Сохранить линии</button>
+              </div>
+        </mat-tab> -->
         <mat-tab label="Book">
-            <img [src]="baseUrl + 'img/' + imageUrl" class="book-page">
-        </mat-tab>
+            <img #image [src]="baseUrl + 'img/' + imageUrl" class="book-page" (load)="onImageLoad()">
+            <canvas #canvas></canvas>
+            <div class="controls">
+                <!-- <button mat-mini-fab class="controls-button" (click)="clearCanvas()">
+                    <mat-icon>delete</mat-icon>
+                </button> -->
+                <!-- <button mat-mini-fab class="controls-button" (click)="saveLines()">
+                    <mat-icon>save</mat-icon>
+                </button> -->
+                <button mat-mini-fab class="controls-button" (click)="deleteSelectedLine()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+          </mat-tab>
     } @else {
         <mat-tab label="Hide answers"></mat-tab>
     }

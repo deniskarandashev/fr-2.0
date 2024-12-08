@@ -55,7 +55,7 @@
                     mat-button 
                     [routerLink]="['/chapter', chapter.id]"
                     [ngClass]="{active: isCurrentChapter(chapter.name)}"
-                >{{ chapter.isIdHidden ? '' : chapter.id + '. ' }} {{ chapter.name }}</a>
+                >{{ chapter.isIdHidden ? '' : chapter.id  + '. ' }} {{ chapter.name }}</a>
             }
 
         }

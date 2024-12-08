@@ -1,5 +1,5 @@
 export interface Chapter {
-    id: number
+    id: number | null
     name: string,
     isIdHidden?: boolean
 }

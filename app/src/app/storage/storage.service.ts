@@ -6,6 +6,7 @@ import { Chapter } from '../models/chapter.model';
 import { BooksEnum } from '../models/books.enum';
 import { data_2 } from './db/data_2';
 import { data_3 } from './db/data_3';
+import { data_4 } from './db/data_4';
 
 
 
@@ -56,6 +57,8 @@ export class StorageService {
         return data_1.find(d => d.id === id)
       case BooksEnum.A1_GRAMM_EN_CONTEXT:
         return data_2.find(d => d.id === id)
+      case BooksEnum.A1_GRAMM_EN_DIALODUES:
+        return data_4.find(d => d.id === id)
       default:
         return data_3.find(d => d.id === id)
     }
@@ -76,6 +79,11 @@ export class StorageService {
         }))
       case BooksEnum.A1_GRAMM_EN_CONTEXT:
         return data_2.map(d => ({
+          id: d.id,
+          name: d.name
+      }))
+      case BooksEnum.A1_GRAMM_EN_DIALODUES:
+        return data_4.map(d => ({
           id: d.id,
           name: d.name
       }))
@@ -143,6 +151,12 @@ export class StorageService {
       level: 'A1',
       storageName: 'A1_GRAMMAR_COMP',
       data: data_3
+    },
+    {
+      name: BooksEnum.A1_GRAMM_EN_DIALODUES,
+      level: 'A1',
+      storageName: 'A1_GRAMM_EN_DIALODUES',
+      data: data_4
     },
     {
       name: BooksEnum.A1_GRAMM_EN_CONTEXT,
