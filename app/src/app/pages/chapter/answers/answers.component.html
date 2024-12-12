@@ -30,6 +30,7 @@
         @for (answerUrl of answersUrl; track $index) {
             <mat-tab [label]="'Answers ' + (answersUrl.length === 1 ? '' : ($index + 1).toString())">
                 <img [src]="baseUrl + 'img/' + answerUrl" [style.width]="'100%'">
+                <canvas #canvas></canvas>
             </mat-tab>
         }
     }

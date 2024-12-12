@@ -135,4 +135,68 @@ export const data_2: FullClass[] = [
       },
     ]
   },
+  {
+    id: 3,
+    name: '12. Les pronoms',
+    baseUrl: 'assets/other_a1/',
+    answersUrl: [
+      
+    ],
+    page: [
+      {
+        id: 1,
+        imageUrl: 'Ch12_p1.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 2,
+        imageUrl: 'Ch12_p2.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 3,
+        imageUrl: 'Ch12_p3.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 4,
+        imageUrl: 'Ch12_p4.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 5,
+        imageUrl: 'Ch12_p5.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 6,
+        imageUrl: 'Ch12_p6.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 7,
+        imageUrl: 'Ch12_p7.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 8,
+        imageUrl: 'Ch12_p8.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 9,
+        imageUrl: 'Ch12_p9.jpg',
+        audioUrl: ['EN_CONTEXTE_A1_PISTE02.mp3'],
+        notes: ''
+      }
+    ]
+  },
 ]
