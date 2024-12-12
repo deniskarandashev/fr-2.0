@@ -140,7 +140,8 @@ export const data_2: FullClass[] = [
     name: '12. Les pronoms',
     baseUrl: 'assets/other_a1/',
     answersUrl: [
-      
+      'Ch12_corr_p1.jpg',
+      'Ch12_corr_p2.jpg'
     ],
     page: [
       {
@@ -158,7 +159,7 @@ export const data_2: FullClass[] = [
       {
         id: 3,
         imageUrl: 'Ch12_p3.jpg',
-        audioUrl: [],
+        audioUrl: ['EN_CONTEXTE_A1_PISTE27.mp3'],
         notes: ''
       },
       {
@@ -194,9 +195,21 @@ export const data_2: FullClass[] = [
       {
         id: 9,
         imageUrl: 'Ch12_p9.jpg',
-        audioUrl: ['EN_CONTEXTE_A1_PISTE02.mp3'],
+        audioUrl: [],
         notes: ''
-      }
+      },
+      {
+        id: 10,
+        imageUrl: 'Ch12_p10.jpg',
+        audioUrl: [],
+        notes: ''
+      },
+      {
+        id: 11,
+        imageUrl: 'Ch12_p11.jpg',
+        audioUrl: [],
+        notes: ''
+      },
     ]
   },
 ]
