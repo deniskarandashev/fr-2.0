@@ -4,6 +4,7 @@ import { FullClass } from "../../models/full-class.model";
 * CO A1
 */
 export const data_3: FullClass[] = [
+  // 'Garder la forme'
   {
     id: 42,
     name: 'Garder la forme',
@@ -27,6 +28,7 @@ export const data_3: FullClass[] = [
       }
     ]
   },
+  // 'Bilan [44]'
   {
     id: 44,
     name: 'Bilan [44]',
@@ -50,6 +52,7 @@ export const data_3: FullClass[] = [
       },
     ]
   },
+  // 'Louer un appartament'
   {
     id: 46,
     name: 'Louer un appartament',
@@ -101,7 +104,7 @@ export const data_3: FullClass[] = [
 
     ]
   },
-//Déménager
+  //Déménager
   {
     id: 52,
     name: 'Déménager',
@@ -156,7 +159,7 @@ export const data_3: FullClass[] = [
     ]
   },
 
-// III - 3: S`installer
+  // III - 3: S`installer
   {
     id: 58,
     name: 'S`installer',
@@ -209,7 +212,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // III - Bilan
   {
     id: 64,
@@ -234,7 +236,6 @@ export const data_3: FullClass[] = [
       },
     ]
   },
-
   // IV - 1: Partager un repas
   {
     id: 66,
@@ -288,7 +289,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // IV - 2: Faire les courses
   {
     id: 72,
@@ -343,7 +343,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // IV - 3: Faire les magasins
   {
     id: 78,
@@ -397,7 +396,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // IV: Bilan
   {
     id: 84,
@@ -422,7 +420,6 @@ export const data_3: FullClass[] = [
       },
     ]
   },
-
   // V - 1: La ville
   {
     id: 86,
@@ -476,7 +473,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // V - 2: Voyager
   {
     id: 92,
@@ -530,7 +526,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // V - 3: Aller en vacances
   {
     id: 98,
@@ -584,7 +579,6 @@ export const data_3: FullClass[] = [
 
     ]
   },
-
   // V: Bilan
   {
     id: 104,
@@ -607,6 +601,58 @@ export const data_3: FullClass[] = [
         audioUrl: [59],
         notes: ''
       },
+    ]
+  },
+  {
+    id: 98,
+    name: 'Aller en vacances',
+    baseUrl: 'assets/gram_a1/',
+    answersUrl: [
+       // scripts
+       'Compréhension Orale_page-0118.jpg',
+       'Compréhension Orale_page-0119.jpg',
+ 
+       // answers
+       'Compréhension Orale_page-0127.jpg'
+    ],
+    page: [
+      {
+        id: 1,
+        imageUrl: 'Compréhension Orale_page-0098.jpg',
+        audioUrl: [56],
+        notes: ''
+      },
+      {
+        id: 2,
+        imageUrl: 'Compréhension Orale_page-0099.jpg',
+        audioUrl: [56],
+        notes: ''
+      },
+      {
+        id: 3,
+        imageUrl: 'Compréhension Orale_page-00100.jpg',
+        audioUrl: [57],
+        notes: ''
+      },
+      {
+        id: 4,
+        imageUrl: 'Compréhension Orale_page-0101.jpg',
+        audioUrl: [57],
+        notes: ''
+      },
+      {
+        id: 5,
+        imageUrl: 'Compréhension Orale_page-0102.jpg',
+        audioUrl: [58],
+        notes: ''
+      },
+      {
+        id: 6,
+        imageUrl: 'Compréhension Orale_page-0103.jpg',
+        audioUrl: [58],
+        notes: ''
+      },
+
     ]
   },
 ]

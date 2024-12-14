@@ -112,6 +112,7 @@ export const data_1: FullClass[] = [
         name: 'Un problème domestique ?',
         baseUrl: 'assets/sam_a1/',
         answersUrl: [
+            'Communication_essentielle_A1_page-0145.jpg',
             'Communication_essentielle_A1_page-0146.jpg',
             'Communication_essentielle_A1_page-0147.jpg'
         ],

@@ -4,6 +4,7 @@ import { FullClass } from "../../models/full-class.model";
 * Grammaire en contexte niveau
 */
 export const data_2: FullClass[] = [
+  // '6. L\'article partitif'
   {
     id: 1,
     name: '6. L\'article partitif',
@@ -61,6 +62,7 @@ export const data_2: FullClass[] = [
       },
     ]
   },
+  // '15. Passé composé'
   {
     id: 2,
     name: '15. Passé composé',
@@ -135,6 +137,7 @@ export const data_2: FullClass[] = [
       },
     ]
   },
+  // '12. Les pronoms'
   {
     id: 3,
     name: '12. Les pronoms',
