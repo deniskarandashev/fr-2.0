@@ -180,7 +180,7 @@ export const data_2: FullClass[] = [
       {
         id: 6,
         imageUrl: 'Ch12_p6.jpg',
-        audioUrl: [],
+        audioUrl: ['EN_CONTEXTE_A1_PISTE28.mp3'],
         notes: ''
       },
       {
