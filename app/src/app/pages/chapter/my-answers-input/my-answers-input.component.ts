@@ -1,4 +1,4 @@
-import { Component, effect, Input, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, effect, Input, OnInit } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms'
@@ -12,7 +12,8 @@ import { HttpEvent } from '@angular/common/http';
   selector: 'app-my-answers-input',
   imports: [FormsModule, MatFormFieldModule, MatInputModule, MatTabsModule],
   templateUrl: './my-answers-input.component.html',
-  styleUrl: './my-answers-input.component.scss'
+  styleUrl: './my-answers-input.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MyAnswersInputComponent implements OnInit {
   @Input() chapterName: string = '';
@@ -23,7 +24,7 @@ export class MyAnswersInputComponent implements OnInit {
   inputNotes: string = ''
   currentBookName: string = '';
 
-  constructor(private storage: StorageService) {
+  constructor(protected storage: StorageService) {
     effect(() => {
       this.currentBookName = this.storage.currentBook().name ?? this.storage.getBooks()[1].name ?? '';
       this.chapterName = this.storage.currentChapter().name ?? '';

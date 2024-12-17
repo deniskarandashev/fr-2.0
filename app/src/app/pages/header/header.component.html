@@ -18,7 +18,8 @@
         <h2>
             {{ getCurrentBook() ? getCurrentBook().name : '' }}
         </h2>
-        <button mat-icon-button class="example-icon" (click)="storage.isQuiz.set(!storage.isQuiz())">
+        <!-- <button mat-icon-button class="example-icon" (click)="storage.isQuiz.set(!storage.isQuiz())"> -->
+        <button mat-icon-button class="example-icon" (click)="changeMode()">
             @if (storage.isQuiz()) {
                 <mat-icon>book</mat-icon>
             } 

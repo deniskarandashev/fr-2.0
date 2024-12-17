@@ -4,10 +4,10 @@
 @else {
 @if (data) {
     @for (page of data.page; track $index) {
-        @if (isMobile) {
+        @if (storage.isAudioMode()) {
             <app-audio [page]="page" [data]="data" [isMobile]="isMobile"></app-audio>
         } @else {
-            <section class="container">
+            <section class="container" [ngClass]="{mobile: isMobile}">
                 <mat-card appearance="outlined" class="section">
                     <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl" [imageUrl]="page.imageUrl ?? ''" ></app-answers>
                 </mat-card>
@@ -15,7 +15,7 @@
                     <app-audio [page]="page" [data]="data"></app-audio>
                     <app-audio-recorder></app-audio-recorder>
                     <app-my-answers-input [chapterName]="data.name" [chapterPageName]="page.imageUrl?.replace('.', '_') ?? ''"></app-my-answers-input>
-                    <app-answers [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl"></app-answers>
+                    <app-answers *ngIf="!isMobile" [answersUrl]="data.answersUrl" [baseUrl]="data.baseUrl"></app-answers>
                 </mat-card>
             </section>
         }

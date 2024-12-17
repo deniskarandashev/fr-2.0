@@ -381,7 +381,7 @@ export class AnswersComponent implements AfterViewInit {
     // Перерисовываем только актуальные линии
     this.lines.forEach(({ id, points }) => {
       this.ctx.beginPath();
-      this.ctx.strokeStyle = id === this.selectedLineId ? 'red' : 'black';
+      this.ctx.strokeStyle = id === this.selectedLineId ? 'blue' : 'red';
       this.ctx.lineWidth = id === this.selectedLineId ? 3 : 1;
   
       for (let i = 0; i < points.length - 1; i++) {

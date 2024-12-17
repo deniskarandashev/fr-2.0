@@ -17,6 +17,8 @@ import { data_5_a1_grammEnDialGrDeb } from './db/data_5_a1_grammEnDialGrDeb';
 export class StorageService {
 
   isQuiz: WritableSignal<boolean> = signal<boolean>(false);
+  isAudioMode: WritableSignal<boolean> = signal<boolean>(false);
+  isMobile: WritableSignal<boolean> = signal<boolean>(false);
   currentBook: WritableSignal<Book> = signal<Book>({});
   notes: WritableSignal<AllNotes> = signal<AllNotes>({});
   currentChapter: WritableSignal<FullClass> = signal<FullClass>({} as FullClass);

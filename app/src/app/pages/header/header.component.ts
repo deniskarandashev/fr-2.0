@@ -62,4 +62,8 @@ export class HeaderComponent {
   upload(event: Event): void {
     this.storage.importNotes(event, 'previous');
   }
+
+  changeMode() {
+    this.storage.isAudioMode.set(!this.storage.isAudioMode());
+  }
 }

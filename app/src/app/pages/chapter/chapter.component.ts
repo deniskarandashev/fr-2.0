@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { StorageService } from '../../storage/storage.service';
 import { FullClass } from '../../models/full-class.model';
 import {MatCardModule} from '@angular/material/card';
@@ -24,6 +24,7 @@ import { QuizComponent } from "../quiz/quiz.component";
   selector: 'app-chapter',
   standalone: true,
   imports: [
+    CommonModule,
     RouterModule,
     MatCardModule,
     MatButtonModule,
@@ -93,5 +94,6 @@ export class ChapterComponent implements OnInit, OnDestroy {
   private updateScreenWidth() {
     this.screenWidth = window.innerWidth;
     this.isMobile = this.screenWidth < 600
+    this.storage.isMobile.set(this.isMobile);
   }
 }
